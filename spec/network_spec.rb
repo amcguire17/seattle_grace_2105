@@ -45,4 +45,22 @@ RSpec.describe Network do
               }
     expect(@gsmn.doctors_by_hospital).to eq(expected)
   end
+
+  it "can list doctors by specialty" do
+    @gsmn.add_hospital(@seattle_grace)
+    @gsmn.add_hospital(@grey_sloan)
+
+    expected = {"General Surgery" => ["Meredith Grey", "Miranda Bailey"],
+                "Pediatric Surgery" => ["Alex Karev"],
+                "Neurosurgery" => ["Derek Sheperd"]
+              }
+    expect(@gsmn.doctors_by_specialty).to eq(expected)
+  end
+
+  it "has average doctors salary" do
+    @gsmn.add_hospital(@seattle_grace)
+    @gsmn.add_hospital(@grey_sloan)
+    
+    expect(@gsmn.average_doctors_salary).to eq(116250.00)
+  end
 end
