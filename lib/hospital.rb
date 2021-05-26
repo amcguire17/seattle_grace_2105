@@ -14,9 +14,9 @@ class Hospital
   end
 
   def lowest_paid_doctor
-    @doctors.min do |doctor|
-      doctor.salary
-      return doctor.name
+    lowest = @doctors[0].salary
+    @doctors.select do |doctor|
+      return doctor.name if doctor.salary < lowest
     end
   end
 
